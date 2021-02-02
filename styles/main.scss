@@ -126,21 +126,46 @@ textarea {
 .wrapper {
   header {
     padding: $gutter-thin-h / 3 $gutter-thin-v $gutter-h * 0.8 $gutter-thin-v;
-    border-bottom: 3px solid $color-accent-red;
+    border-bottom: 4px solid $color-accent-red;
+
     .upper-menu {
       max-width: $max-width-container;
       margin: auto;
+      margin-bottom: -7px; //compensate for the image padding
       font-size: $font-size-xsmall;
       font-weight: 400;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-      a:hover {
-        text-decoration: underline;
-        text-decoration-color: $color-accent-grey;
-        text-decoration-thickness: 2px;
-        text-underline-offset: $gutter-thin-h / 2;
-      }
       .logo {
-        height: $font-size-header;
+        height: 50px;
+        margin: 0;
+      }
+
+      .toggle-menu {
+        display: none;
+      }
+
+      ul.upper-menu-items {
+        margin-left: $gutter-v * 1.5;
+        height: auto !important;
+
+        li {
+          display: inline;
+          margin-left: $gutter-thin-v;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          a:hover {
+            text-decoration: underline;
+            text-decoration-color: $color-accent-grey;
+            text-decoration-thickness: 3px;
+            text-underline-offset: $gutter-thin-h / 2;
+          }
+        }
       }
     }
 
@@ -148,34 +173,64 @@ textarea {
       max-width: $max-width-container;
       margin: auto;
       text-transform: uppercase;
+      gap: $gutter-v;
+      margin-top: $gutter-h;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-      li.nav-item:first-child {
-        a.nav-link {
-          padding-left: 0;
+      .toggle-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        display: none;
+        .lnr {
+          margin-left: $gutter-thin-v / 2;
+          font-size: $font-size;
+        }
+
+        &:hover {
+          cursor: pointer;
         }
       }
 
-      a.active {
-        text-decoration: underline;
-        text-decoration-color: $color-accent-red;
-        text-decoration-thickness: 3px;
-        text-underline-offset: $gutter-thin-h / 2;
-      }
-      a:hover {
-        text-decoration: underline;
-        text-decoration-color: $color-accent-red;
-        text-decoration-thickness: 3px;
-        text-underline-offset: $gutter-thin-h / 2;
+      .menu-items {
+        transition: height $duration-s $easing;
+
+        li {
+          display: inline;
+          margin-left: $gutter-v;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          a.active {
+            text-decoration: underline;
+            text-decoration-color: $color-accent-red;
+            text-decoration-thickness: 4px;
+            text-underline-offset: $gutter-thin-h / 2;
+          }
+          a:hover {
+            text-decoration: underline;
+            text-decoration-color: $color-accent-red;
+            text-decoration-thickness: 4px;
+            text-underline-offset: $gutter-thin-h / 2;
+          }
+        }
       }
 
       .donate-btn {
-        font-size: $font-size;
         color: $background-color;
         background: $color-accent-red;
-        padding: $gutter-thin-h / 2.5 $gutter-v;
+        padding: $gutter-thin-h / 1.6 $gutter-v * 1.3;
         border-radius: 0;
         a {
-          font-size: $font-size-xsmall;
+          font-size: $font-size-small;
+          strong {
+            font-weight: 700;
+          }
         }
 
         &:hover {
@@ -195,7 +250,7 @@ textarea {
     .slider {
       .slider-content {
         position: relative;
-        height: 85.5vh;
+        height: 100vh;
 
         img {
           width: 100vw;
@@ -509,6 +564,8 @@ textarea {
       font-weight: 400;
       font-size: $font-size-xsmall;
       gap: $gutter-v * 1.5;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
 
       h4 {
         font-weight: 600;
@@ -585,7 +642,6 @@ textarea {
     }
     img {
       height: 100px;
-      // display: none;
     }
 
     .rights-reserved {
@@ -596,6 +652,107 @@ textarea {
       padding-bottom: $gutter-h * 1.2;
       font-weight: 400;
       font-size: $font-size-xsmall;
+    }
+  }
+
+  // =-=-=-=-=-=-=-=-=-=-=
+  // =-=- Mobile Layout
+  // =-=-=-=-=-=-=-=-=-=-=
+  @media (max-width: 768px) {
+    header {
+      .upper-menu {
+        text-align: center;
+      }
+
+      .menu {
+        align-items: flex-start;
+        .menu-wrapper {
+          .toggle-menu {
+            margin-top: $gutter-thin-h / 1.7;
+            display: inline-block;
+          }
+          .menu-items {
+            height: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin-top: $gutter-thin-h;
+
+            li {
+              margin-left: 0;
+              a {
+                padding-left: 0;
+              }
+
+              a.active {
+                text-decoration-thickness: 3px;
+                text-underline-offset: $gutter-thin-h / 4;
+              }
+              a:hover {
+                text-decoration-thickness: 3px;
+                text-underline-offset: $gutter-thin-h / 4;
+              }
+            }
+          }
+        }
+      }
+    }
+    .container-content {
+      .content {
+        .gallery {
+          display: grid;
+          gap: $gutter-thin-h $gutter-thin-v;
+          grid-template-areas:
+            "item1 item1"
+            "item2 item3"
+            "item4 item5"
+            "item6 item6";
+        }
+
+        .cta {
+          margin-left: $gutter-thin-h;
+          margin-right: $gutter-thin-h;
+
+          .cta-buttons {
+            margin-left: $gutter-thin-h;
+            margin-right: $gutter-thin-h;
+            flex-direction: column;
+            justify-content: center;
+            .cta-button.col {
+              // position: relative;
+              &:first-child {
+                margin-top: 0;
+              }
+              margin-top: $gutter-h * 2;
+            }
+          }
+        }
+      }
+    }
+
+    footer {
+      .row {
+        display: flex;
+        flex-direction: column;
+
+        .about {
+          .social-media {
+            position: relative;
+            margin-top: $gutter-h * 1.5;
+          }
+        }
+        .links {
+          p {
+            margin-bottom: $gutter-thin-h;
+          }
+        }
+        .contact {
+          .payment-methods {
+            margin-top: $gutter-h * 1.5;
+            position: relative;
+          }
+        }
+      }
     }
   }
 

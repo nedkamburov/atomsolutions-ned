@@ -14,24 +14,31 @@
 <body>
     <div class="wrapper">
         <header>
-            <ul class="nav upper-menu align-items-center">
-                <li class='nav-item'><img class='logo' src="images/logo.png" alt="Logo of HospiceGuiden"></li>
-                <li class='nav-item'><a class='nav-link' href="#"> Bliv frivillig</a></li>
-                <li class='nav-item'><a class='nav-link' href="#">Bliv medlem </a></li>
-                <li class='nav-item'><a class='nav-link' href="#">FAQ</a></li>
-                <li class='nav-item'><a class='nav-link' href="#">Presse</a></li>
-                <li class='nav-item'><a class='nav-link' href="#">Visksomheder</a></li>
-            </ul>
-            <hr>
-            <nav class="menu row justify-content-between align-items-center">
-                <ul class="nav col col-10">
-                    <li class='nav-item'><a class="nav-link active" href="#">Forsiden</a></li>
-                    <li class='nav-item'><a class="nav-link" href="#">Hospice Guide </a></li>
-                    <li class='nav-item'><a class="nav-link" href="#">Om Os</a></li>
-                    <li class='nav-item'><a class="nav-link" href="#">Nyheder</a></li>
-                    <li class='nav-item'><a class="nav-link" href="#">Søg Plads På et Hospice</a></li>
+            <section class="upper-menu">
+                <img class='logo' src="images/logo.png" alt="Logo of HospiceGuiden">
+                <ul class='upper-menu-items'>
+                    <li><a href="#"> Bliv frivillig</a></li>
+                    <li><a href="#">Bliv medlem </a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Visksomheder</a></li>
                 </ul>
-                <div class="cta col text-right">
+            </section>
+            <hr>
+            <nav class="menu">
+                <div class='menu-wrapper'>
+                    <div class="toggle-menu">
+                        <span>Menu</span><span class="lnr lnr-menu"></span>
+                    </div>
+                    <ul class="menu-items">
+                        <li><a class="active" href="#">Forsiden</a></li>
+                        <li><a href="#">Hospice Guide </a></li>
+                        <li><a href="#">Om Os</a></li>
+                        <li><a href="#">Nyheder</a></li>
+                        <li><a href="#">Søg Plads På et Hospice</a></li>
+                    </ul>
+                </div>
+                <div class="cta text-right">
                     <span class="donate-btn btn"><a href="#"><strong>Donation</strong></a></span>
                 </div>
             </nav>
